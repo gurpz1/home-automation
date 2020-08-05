@@ -1,0 +1,3 @@
+[submodule "openhab/conf"]
+	path = openhab/conf
+	url = https://github.com/gurpz1/openhab-conf
