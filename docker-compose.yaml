@@ -21,6 +21,7 @@ services:
   openhab:
     image: openhab/openhab:2.5.4
     container_name: openhab
+    user: openhab
     volumes:
       - ./openhab/addons:/openhab/addons
       - ./openhab/conf:/openhab/conf
@@ -39,6 +40,7 @@ services:
   mosquitto:
     image: eclipse-mosquitto:latest
     container_name: mosquitto
+    user: mosquitto
     volumes:
       - ./mosquitto/conf:/mosquitto/conf
       - ./mosquitto/data:/mosquitto/data
