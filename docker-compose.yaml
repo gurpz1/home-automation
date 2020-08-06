@@ -30,7 +30,7 @@ services:
     networks:
       - iot-network
     environment:
-      - EXTRA_JAVA_OPTS=-Xms16m -Xmx256m -Xbootclasspath/a:/openhab/conf/libs/jython/jython-2.7.2.jar -Dpython.home=/openhab/conf/libs/jython -Dpython.path=/openhab/conf/libs/python
+      - EXTRA_JAVA_OPTS=-Xms16m -Xmx256m -Xbootclasspath/a:/openhab/conf/libs/jython/jython-2.7.2.jar -Dpython.home=/openhab/conf/automation/jsr223/python -Dpython.path=/openhab/conf/automation/lib/python
       - USER_ID=1002
       - GROUP_ID=100
     expose:
