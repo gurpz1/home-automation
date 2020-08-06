@@ -1,3 +1,14 @@
+aquota.group
+aquota.user
+
 nginx/logs/
-openhab/userdata/
 portainer/
+
+mosquitto/conf/password_file
+mosquitto/data/
+mosquitto/log/
+
+openhab/userdata/
+openhab/.DS_Store
+openhab/._.DS_Store
+openhab/.vscode/
