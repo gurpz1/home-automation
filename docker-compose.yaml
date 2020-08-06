@@ -16,6 +16,7 @@ services:
       - 1884:1884
     networks:
       - iot-network
+      - admin
   
   openhab:
     image: openhab/openhab:2.5.4
@@ -33,6 +34,7 @@ services:
     expose:
       - "8080"
       - "8443"
+    dns: "192.168.1.1"
 
   mosquitto:
     image: eclipse-mosquitto:latest
@@ -46,8 +48,24 @@ services:
       - "9001"
     networks:
       - iot-network
+  
+  portainer:
+    image: portainer/portainer:latest
+    container_name: portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./portainer:/data
+    expose:
+      - "9000"
+      - "8000"
+    networks:
+      - admin
 
 networks:
   iot-network:
     name: iot-network
     driver: bridge
+  admin:
+    name: admin
+    driver: bridge
+
