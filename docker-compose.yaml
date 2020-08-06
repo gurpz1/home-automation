@@ -19,7 +19,7 @@ services:
       - admin
   
   openhab:
-    image: openhab/openhab:2.5.4
+    image: openhab/openhab:latest
     container_name: openhab
     user: openhab
     volumes:
