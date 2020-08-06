@@ -13,7 +13,7 @@ services:
     ports:
       - 80:80
       - 443:443
-      - 1884:1884
+      - 1883:1883
     networks:
       - iot-network
       - admin
@@ -21,7 +21,6 @@ services:
   openhab:
     image: openhab/openhab:latest
     container_name: openhab
-    user: openhab
     volumes:
       - ./openhab/addons:/openhab/addons
       - ./openhab/conf:/openhab/conf
@@ -32,6 +31,8 @@ services:
       - iot-network
     environment:
       - EXTRA_JAVA_OPTS=-Xms16m -Xmx256m -Xbootclasspath/a:/openhab/conf/libs/jython/jython-2.7.2.jar -Dpython.home=/openhab/conf/libs/jython -Dpython.path=/openhab/conf/libs/python
+      - USER_ID=1002
+      - GROUP_ID=100
     expose:
       - "8080"
       - "8443"
