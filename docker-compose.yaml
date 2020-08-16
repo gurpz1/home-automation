@@ -14,6 +14,7 @@ services:
       - 80:80
       - 443:443
       - 1883:1883
+    restart: always
     networks:
       - iot-network
       - admin
@@ -27,6 +28,7 @@ services:
       - ./openhab/userdata:/openhab/userdata
     depends_on:
       - mosquitto
+    restart: always
     networks:
       - iot-network
     environment:
@@ -49,6 +51,7 @@ services:
     expose:
       - "1883"
       - "9001"
+    restart: always
     networks:
       - iot-network
   
@@ -61,6 +64,7 @@ services:
     expose:
       - "9000"
       - "8000"
+    restart: always
     networks:
       - admin
 
