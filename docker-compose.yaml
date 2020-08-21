@@ -33,13 +33,19 @@ services:
     networks:
       - iot-network
     environment:
-      - EXTRA_JAVA_OPTS=-Xms16m -Xmx256m -Xbootclasspath/a:/openhab/conf/libs/jython/jython-2.7.2.jar -Dpython.home=/openhab/conf/automation/jsr223/python -Dpython.path=/openhab/conf/automation/lib/python
+      - EXTRA_JAVA_OPTS=-Xms16m -Xmx1024m -Xbootclasspath/a:/openhab/conf/libs/jython/jython-2.7.2.jar -Dpython.home=/openhab/conf/automation/jsr223/python -Dpython.path=/openhab/conf/automation/lib/python
       - USER_ID=1002
       - GROUP_ID=100
     expose:
       - "8080"
       - "8443"
     dns: "192.168.1.1"
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+        reservations:
+          memory: 1024M
 
   mosquitto:
     image: eclipse-mosquitto:latest
