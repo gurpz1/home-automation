@@ -50,9 +50,9 @@ services:
   mosquitto:
     image: eclipse-mosquitto:latest
     container_name: mosquitto
-    user: mosquitto
+    user: 1003:1003
     volumes:
-      - ./mosquitto/conf:/mosquitto/conf
+      - ./mosquitto/config:/mosquitto/config
       - ./mosquitto/data:/mosquitto/data
       - ./mosquitto/log:/mosquitto/log
     expose:
