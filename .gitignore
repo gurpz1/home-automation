@@ -12,3 +12,6 @@ openhab/userdata/
 openhab/.DS_Store
 openhab/._.DS_Store
 openhab/.vscode/
+
+zigbee2mqtt/*
+!zigbee2mqtt/configuration.yaml
