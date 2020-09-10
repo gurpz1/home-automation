@@ -14,6 +14,4 @@ advanced:
   log_output:
     - file
   network_key: '!secret network_key'
-devices:
-  '0x00124b002214f1d7':
-    friendly_name: 'temperature-sensor-01'
+devices: devices.yaml
