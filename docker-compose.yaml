@@ -29,6 +29,7 @@ services:
       - ./openhab/userdata:/openhab/userdata
     depends_on:
       - mosquitto
+      - zigbee2mqtt
     restart: always
     networks:
       - iot-network
@@ -74,6 +75,20 @@ services:
     restart: always
     networks:
       - admin
+
+  zigbee2mqtt:
+    image: koenkk/zigbee2mqtt:latest
+    container_name: zigbee2mqtt
+    devices:
+      - /dev/ttyUSB0
+    volumes:
+      - ./zigbee2mqtt:/app/data
+      - /run/udev:/run/udev:ro
+    restart: always
+    environment:
+      - TZ=Europe/London
+    networks:
+      - iot-network
 
 networks:
   iot-network:
