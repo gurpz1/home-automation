@@ -82,6 +82,7 @@ services:
     image: grafana/grafana:latest
     container_name: grafana
     user: 1005:1005
+    restart: always
     volumes:
       - ./grafana:/etc/grafana
       - ./grafana/log:/var/log/grafana
@@ -96,6 +97,7 @@ services:
     image: influxdb:latest
     container_name: influxdb
     user: 1004:1004
+    restart: always
     volumes:
       - ./influxdb:/var/lib/influxdb
       - ./influxdb/influxdb.conf:/etc/influxdb/influxdb.conf
