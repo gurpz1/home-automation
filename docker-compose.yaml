@@ -63,19 +63,6 @@ services:
     networks:
       - iot-network
   
-  portainer:
-    image: portainer/portainer:latest
-    container_name: portainer
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./portainer:/data
-    expose:
-      - "9000"
-      - "8000"
-    restart: always
-    networks:
-      - admin
-
   zigbee2mqtt:
     image: koenkk/zigbee2mqtt:latest
     container_name: zigbee2mqtt
@@ -89,6 +76,47 @@ services:
       - TZ=Europe/London
     networks:
       - iot-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    user: 1005:1005
+    volumes:
+      - ./grafana:/etc/grafana
+      - ./grafana/log:/var/log/grafana
+    depends_on:
+      - influxdb
+    expose:
+      - "3000"
+    networks:
+      - monitoring
+
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    user: 1004:1004
+    volumes:
+      - ./influxdb:/var/lib/influxdb
+      - ./influxdb/influxdb.conf:/etc/influxdb/influxdb.conf
+    networks:
+      - monitoring
+    expose:
+      - "8086"
+      - "8088"
+
+  portainer:
+    image: portainer/portainer:latest
+    container_name: portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./portainer:/data
+    expose:
+      - "9000"
+      - "8000"
+    restart: always
+    networks:
+      - admin
+
 
 networks:
   iot-network:
