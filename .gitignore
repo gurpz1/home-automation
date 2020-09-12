@@ -15,3 +15,9 @@ openhab/.vscode/
 
 zigbee2mqtt/*
 !zigbee2mqtt/configuration.yaml
+
+grafana/*
+!grafana/grafana.ini
+
+influxdb/*
+!influxdb/influxdb.conf
