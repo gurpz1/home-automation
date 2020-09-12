@@ -17,8 +17,9 @@ services:
       - 883:883
     restart: always
     networks:
-      - iot-network
       - admin
+      - iot-network
+      - monitoring
   
   openhab:
     image: openhab/openhab:latest
