@@ -120,6 +120,9 @@ services:
 
 
 networks:
+  monitoring:
+    name: monitoring
+    driver: bridge
   iot-network:
     name: iot-network
     driver: bridge
