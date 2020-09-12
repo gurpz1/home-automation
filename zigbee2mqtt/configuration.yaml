@@ -3,9 +3,10 @@ permit_join: true
 mqtt:
   base_topic: zigbee
   server: 'mqtt://mosquitto:1883'
+  client_id: zigbee
   user: '!secret user'
   password: '!secret password'
-  client_id: zigbee
+  version: 5
 serial:
   port: /dev/ttyUSB0
 advanced:
@@ -14,4 +15,7 @@ advanced:
   log_output:
     - file
   network_key: '!secret network_key'
+  availability_timeout: 900
+  channel: 11
+  rtscts: false
 devices: devices.yaml
