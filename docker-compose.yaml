@@ -35,6 +35,7 @@ services:
     restart: always
     networks:
       - iot-network
+      - monitoring
     environment:
       - EXTRA_JAVA_OPTS=-Xms16m -Xmx1024m -Xbootclasspath/a:/openhab/conf/libs/jython/jython-2.7.2.jar -Dpython.home=/openhab/conf/automation/jsr223/python -Dpython.path=/openhab/conf/automation/lib/python
       - USER_ID=1002
