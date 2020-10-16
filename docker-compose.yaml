@@ -6,12 +6,11 @@ services:
     container_name: nginx
     volumes:
       - ./nginx:/etc/nginx
-      - ./nginx/logs:/var/log/nginx/log
     ports:
       - 80:80
       - 443:443
-      - 1883:1883
       - 883:883
+      - 25830:25830/udp
     restart: always
     networks:
       - admin
@@ -87,6 +86,7 @@ services:
     volumes:
       - ./grafana:/etc/grafana
       - ./grafana/log:/var/log/grafana
+      - ./grafana/data:/var/lib/grafana
     expose:
       - "3000"
     networks:
@@ -100,10 +100,12 @@ services:
     volumes:
       - ./influxdb:/var/lib/influxdb
       - ./influxdb/influxdb.conf:/etc/influxdb/influxdb.conf
+      - ./influxdb/types.db:/usr/share/collectd/types.db
     networks:
       - monitoring
     expose:
       - "8086"
+      - "25830"
 
   portainer:
     image: portainer/portainer:latest
@@ -113,7 +115,6 @@ services:
       - ./portainer:/data
     expose:
       - "9000"
-      - "8000"
     restart: always
     networks:
       - admin
