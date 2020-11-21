@@ -19,7 +19,8 @@ services:
       - monitoring
   
   openhab:
-    image: openhab/openhab:latest
+    build:
+      context: openhab
     container_name: openhab
     volumes:
       - ./openhab/addons:/openhab/addons

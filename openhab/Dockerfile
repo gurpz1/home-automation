@@ -1,0 +1,2 @@
+FROM openhab/openhab:latest
+
