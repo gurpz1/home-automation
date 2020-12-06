@@ -19,4 +19,5 @@ advanced:
   availability_timeout: 900
   channel: 11
   rtscts: false
+  report: true
 devices: devices.yaml
