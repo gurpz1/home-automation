@@ -21,3 +21,5 @@ grafana/*
 
 influxdb/*
 !influxdb/influxdb.conf
+
+secrets/*
