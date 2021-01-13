@@ -73,6 +73,7 @@ services:
     volumes:
       - ./zigbee2mqtt:/app/data
       - /run/udev:/run/udev:ro
+      # - ./zigbee2mqtt/zigbee-herdsman-converters:/app/node_modules/zigbee-herdsman-converters
     restart: always
     environment:
       - TZ=Europe/London
@@ -108,6 +109,15 @@ services:
       - "8086"
       - "25830"
 
+  speedtest:
+    build:
+      context: speedtest
+    container_name: speedtest
+    restart: always
+    networks:
+      - monitoring
+      - external
+
   portainer:
     image: portainer/portainer:latest
     container_name: portainer
@@ -119,7 +129,6 @@ services:
     restart: always
     networks:
       - admin
-
 
 networks:
   monitoring:
