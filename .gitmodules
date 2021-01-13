@@ -1,3 +1,6 @@
 [submodule "openhab/conf"]
 	path = openhab/conf
 	url = https://github.com/gurpz1/openhab-conf
+[submodule "speedtest"]
+	path = speedtest
+	url = git@github.com:gurpz1/speedtest-to-influxdb.git
