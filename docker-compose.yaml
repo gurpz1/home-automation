@@ -103,6 +103,10 @@ services:
       - ./influxdb:/var/lib/influxdb
       - ./influxdb/influxdb.conf:/etc/influxdb/influxdb.conf
       - ./influxdb/types.db:/usr/share/collectd/types.db
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1g" 
     networks:
       - monitoring
     expose:
